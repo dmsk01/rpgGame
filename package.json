@@ -10,7 +10,7 @@
     "prepare": "husky install",
     "build:dev": "npx env NODE_ENV=development webpack",
     "build": "npx env NODE_ENV=production webpack",
-    "start": "webpack server"
+    "start": "node scripts/start.js"
   },
   "repository": {
     "type": "git",
@@ -41,6 +41,8 @@
     "husky": "^6.0.0"
   },
   "dependencies": {
-    "@babel/core": "^7.14.6"
+    "@babel/core": "^7.14.6",
+    "@hapi/hapi": "^20.1.4",
+    "@hapi/inert": "^6.0.3"
   }
 }
