@@ -1,7 +1,8 @@
 const path = require('path');
+
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
-const NODE_ENV = process.env.NODE_ENV;
+const { NODE_ENV } = process.env;
 
 module.exports = {
   mode: NODE_ENV || 'development',
@@ -38,10 +39,10 @@ module.exports = {
             options: {
               name: '[name].[ext]',
               outputPath: 'assets/',
-            }
-          }
-        ]
-      }
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
@@ -56,5 +57,5 @@ module.exports = {
     hot: true,
     historyApiFallback: true,
   },
-  devtool:NODE_ENV === 'development' ? 'source-map' : false,
+  devtool: NODE_ENV === 'development' ? 'source-map' : false,
 };

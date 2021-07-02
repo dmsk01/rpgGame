@@ -146,3 +146,14 @@ body {
   left: 0;
   z-index: 100;
 }
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
