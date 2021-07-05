@@ -13,8 +13,8 @@ const spriteWidth = 48;
 const spriteHeigth = 48;
 const shots = 3;
 let cycle = 1;
-let pY = 270; // Canvas Position on Y axis
-let pX = 270; // Canvas Position on X axis
+let pY = (canvas.offsetHeight - spriteHeigth) / 2; // Canvas Position on Y axis
+let pX = (canvas.offsetWidth - spriteWidth) / 2; // Canvas Position on X axis
 let direction = '';
 let side = 0;
 
@@ -24,22 +24,22 @@ function keyDownHandler(event) {
   if (event.key === 'Down' || event.key === 'ArrowDown') {
     bottomPressed = true;
     direction = 'down';
-    side = 0;
-  }
-  if (event.key === 'Up' || event.key === 'ArrowUp') {
-    bottomPressed = true;
-    direction = 'up';
-    side = 144;
+    side = spriteHeigth * 0;
   }
   if (event.key === 'Left' || event.key === 'ArrowLeft') {
     bottomPressed = true;
     direction = 'left';
-    side = 48;
+    side = spriteHeigth * 1;
   }
   if (event.key === 'Right' || event.key === 'ArrowRight') {
     bottomPressed = true;
     direction = 'right';
-    side = 96;
+    side = spriteHeigth * 2;
+  }
+  if (event.key === 'Up' || event.key === 'ArrowUp') {
+    bottomPressed = true;
+    direction = 'up';
+    side = spriteHeigth * 3;
   }
 }
 
@@ -67,7 +67,7 @@ image.addEventListener('load', () => {
     if (bottomPressed) {
       switch (direction) {
         case 'down':
-          if (pY <= 600 - spriteHeigth) {
+          if (pY <= canvas.offsetHeight - spriteHeigth) {
             pY += 10;
           }
           break;
@@ -77,7 +77,7 @@ image.addEventListener('load', () => {
           }
           break;
         case 'right':
-          if (pX <= 600 - spriteWidth) {
+          if (pX <= canvas.offsetWidth - spriteWidth) {
             pX += 10;
           }
           break;
@@ -91,7 +91,7 @@ image.addEventListener('load', () => {
       }
       cycle = (cycle + 1) % shots;
     }
-    context.clearRect(0, 0, 600, 600);
+    context.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
     context.drawImage(image, cycle * spriteWidth, side, spriteWidth, spriteHeigth, pX, pY, 48, 48);
   }, 120);
 });
