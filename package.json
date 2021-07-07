@@ -8,8 +8,8 @@
     "pretty": "npx prettier --write .",
     "dev": "npx webpack server",
     "prepare": "husky install",
-    "build:dev": "npx env NODE_ENV=development webpack",
-    "build": "npx env NODE_ENV=production webpack",
+    "build:dev": "npx cross-env NODE_ENV=development webpack",
+    "build": "npx cross-env NODE_ENV=production webpack",
     "start": "node scripts/start.js"
   },
   "repository": {
@@ -43,6 +43,7 @@
   "dependencies": {
     "@babel/core": "^7.14.6",
     "@hapi/hapi": "^20.1.4",
-    "@hapi/inert": "^6.0.3"
+    "@hapi/inert": "^6.0.3",
+    "cross-env": "^7.0.3"
   }
 }
