@@ -9,6 +9,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    "no-restricted-syntax": ["error", "FunctionExpression", "WithStatement", "BinaryExpression[operator='in']",
+    // "no-restricted-syntax": ["error", "FunctionExpression", "WithStatement", "BinaryExpression[operator='in']"],
+    'max-len': ['error', { code: 120, comments: 140 }],
   },
 };

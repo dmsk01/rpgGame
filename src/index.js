@@ -107,16 +107,19 @@ image.addEventListener('load', () => {
   window.requestAnimationFrame(walk);
 });
 
-terrain.addEventListener('load', () => {
-  const { map } = worldConfig;
-  map.forEach((cfgRow, y) => {
-    // cfgRow -> item, y -> index
-    cfgRow.forEach((cfgCell, x) => {
-      const [sX, sY, sW, sH] = sprites.terrain[cfgCell[0]].frames[0];
-      mapContext.drawImage(terrain, sX, sY, sW, sH, x * spriteW, y * spriteH, spriteW, spriteH);
-    });
-  });
-});
+const { map } = worldConfig;
+// console.log(map);
+
+// terrain.addEventListener('load', () => {
+//   const { map } = worldConfig;
+//   map.forEach((cfgRow, y) => {
+//     // cfgRow -> item, y -> index
+//     cfgRow.forEach((cfgCell, x) => {
+//       const [sX, sY, sW, sH] = sprites.terrain[cfgCell[0]].frames[0];
+//       mapContext.drawImage(terrain, sX, sY, sW, sH, x * spriteW, y * spriteH, spriteW, spriteH);
+//     });
+//   });
+// });
 
 window.addEventListener('load', () => {
   ClientGame.init({ tagId: 'game' });

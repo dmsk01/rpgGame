@@ -31,19 +31,19 @@ class ClientEngine {
     window.requestAnimationFrame(this.loop);
   }
 
-  loadSprites(spritesGroup) {
+  loadSprites(spriteGroup) {
     this.imageLoaders = [];
-    for (let groupName in spritesGroup) {
-      const group = spritesGroup[groupName];
+    Object.keys(spriteGroup).forEach((groupName) => {
+      const group = spriteGroup[groupName];
       this.sprites[groupName] = group;
 
-      for (let spriteName in group) {
+      Object.keys(group).forEach((spriteName) => {
         const { img } = group[spriteName];
         if (!this.images[img]) {
           this.imageLoaders.push(this.loadImage(img));
         }
-      }
-    }
+      });
+    });
     return Promise.all(this.imageLoaders);
   }
 
@@ -62,6 +62,7 @@ class ClientEngine {
     const img = this.images[spriteCfg.img];
 
     this.context.drawImage(img, fx, fy, fw, fh, x, y, w, h);
+    // console.log('spriteFrame func args', sprite, frame, x, y, w, h);
   }
 }
 

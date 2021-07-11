@@ -12,6 +12,7 @@ class ClientGame {
     this.world = this.createWorld();
 
     this.initEngine();
+    console.log(this);
   }
 
   createEngine() {
