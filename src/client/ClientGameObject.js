@@ -58,7 +58,7 @@ class ClientGameObject extends MovableObject {
 
     const { x, y, width, height, world } = this;
 
-    const engine = world.engine;
+    const { engine } = world;
 
     const { sprite, frame, states } = this.spriteCfg;
 
