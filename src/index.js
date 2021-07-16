@@ -2,13 +2,10 @@ import './index.scss';
 import SenseiWalk from './assets/Male-4-Walk.png';
 import terrainAtlas from './assets/terrain.png';
 import worldConfig from './configs/world.json';
-import sprites from './configs/sprites';
 import ClientGame from './client/ClientGame';
 
 const canvas = document.getElementById('game');
-const mapCanvas = document.getElementById('map');
 const context = canvas.getContext('2d');
-const mapContext = mapCanvas.getContext('2d');
 
 const image = document.createElement('img');
 image.src = SenseiWalk;
@@ -108,18 +105,6 @@ image.addEventListener('load', () => {
 });
 
 const { map } = worldConfig;
-// console.log(map);
-
-// terrain.addEventListener('load', () => {
-//   const { map } = worldConfig;
-//   map.forEach((cfgRow, y) => {
-//     // cfgRow -> item, y -> index
-//     cfgRow.forEach((cfgCell, x) => {
-//       const [sX, sY, sW, sH] = sprites.terrain[cfgCell[0]].frames[0];
-//       mapContext.drawImage(terrain, sX, sY, sW, sH, x * spriteW, y * spriteH, spriteW, spriteH);
-//     });
-//   });
-// });
 
 window.addEventListener('load', () => {
   ClientGame.init({ tagId: 'game' });
