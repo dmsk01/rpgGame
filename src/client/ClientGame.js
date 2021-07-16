@@ -38,26 +38,30 @@ class ClientGame {
     });
   }
 
+  moveToCell(x, y) {
+    this.player.moveByCellCoord(x, y, (cell) => cell.findObjectsByType('grass').length);
+  }
+
   initKeys() {
     this.engine.input.onKey({
       ArrowLeft: (keydown) => {
         if (keydown) {
-          this.player.moveByCellCoord(-1, 0, (cell) => cell.findObjectsByType('grass').length);
+          this.moveToCell(-1, 0);
         }
       },
       ArrowRight: (keydown) => {
         if (keydown) {
-          this.player.moveByCellCoord(+1, 0, (cell) => cell.findObjectsByType('grass').length);
+          this.moveToCell(1, 0);
         }
       },
       ArrowUp: (keydown) => {
         if (keydown) {
-          this.player.moveByCellCoord(0, -1, (cell) => cell.findObjectsByType('grass').length);
+          this.moveToCell(0, -1);
         }
       },
       ArrowDown: (keydown) => {
         if (keydown) {
-          this.player.moveByCellCoord(0, +1, (cell) => cell.findObjectsByType('grass').length);
+          this.moveToCell(0, 1);
         }
       },
     });
