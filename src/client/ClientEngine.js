@@ -3,7 +3,7 @@ import ClientCamera from './ClientCamera';
 import ClientInput from './ClientInput';
 
 class ClientEngine {
-  constructor(canvas) {
+  constructor(canvas, game) {
     Object.assign(this, {
       canvas,
       context: null,
@@ -12,6 +12,7 @@ class ClientEngine {
       images: {},
       camera: new ClientCamera({ canvas, engine: this }),
       input: new ClientInput(canvas),
+      game,
     });
 
     this.context = canvas.getContext('2d');
@@ -64,9 +65,10 @@ class ClientEngine {
     const spriteCfg = this.sprites[sprite[0]][sprite[1]];
     const [fx, fy, fw, fh] = spriteCfg.frames[frame];
     const img = this.images[spriteCfg.img];
+    const { camera } = this;
+    console.log(camera.x, camera.y);
 
-    this.context.drawImage(img, fx, fy, fw, fh, x, y, w, h);
-    // console.log('spriteFrame func args', sprite, frame, x, y, w, h);
+    this.context.drawImage(img, fx, fy, fw, fh, x - camera.x, y - camera.y, w, h);
   }
 }
 
