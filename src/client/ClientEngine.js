@@ -66,8 +66,6 @@ class ClientEngine {
     const [fx, fy, fw, fh] = spriteCfg.frames[frame];
     const img = this.images[spriteCfg.img];
     const { camera } = this;
-    console.log(camera.x, camera.y);
-
     this.context.drawImage(img, fx, fy, fw, fh, x - camera.x, y - camera.y, w, h);
   }
 }
