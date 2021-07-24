@@ -13,6 +13,8 @@ class ClientEngine {
       camera: new ClientCamera({ canvas, engine: this }),
       input: new ClientInput(canvas),
       game,
+      lastRenderTime: 0,
+      startTime: 0,
     });
 
     this.context = canvas.getContext('2d');
@@ -24,6 +26,12 @@ class ClientEngine {
   }
 
   loop(timestamp) {
+    if (!this.startTime) {
+      this.startTime = timestamp;
+    }
+
+    this.lastRenderTime = timestamp;
+    
     const { context, canvas } = this;
     context.fillStyle = 'black';
     context.clearRect(0, 0, canvas.width, canvas.height);

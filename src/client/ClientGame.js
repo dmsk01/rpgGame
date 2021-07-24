@@ -53,8 +53,19 @@ class ClientGame {
 
     const { player } = this;
 
-    if (player) {
-      player.moveByCellCoord(dirs[dir][0], dirs[dir][1], (cell) => cell.findObjectsByType('grass').length);
+    if (player && player.motionProgress === 1) {
+      const canMove = player.moveByCellCoord(
+        dirs[dir][0],
+        dirs[dir][1],
+        (cell) => cell.findObjectsByType('grass').length,
+      );
+
+      if (canMove) {
+        player.setState(dir);
+        player.once('motion-stopped', () => {
+          player.setState('main');
+        });
+      }
     }
   }
 
