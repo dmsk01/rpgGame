@@ -6,6 +6,9 @@ class ClientEngine {
   constructor(canvas, game) {
     Object.assign(this, {
       canvas,
+      canvases: {
+        main: canvas,
+      },
       context: null,
       imageLoaders: [],
       sprites: {},
@@ -31,7 +34,7 @@ class ClientEngine {
     }
 
     this.lastRenderTime = timestamp;
-    
+
     const { context, canvas } = this;
     context.fillStyle = 'black';
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -75,6 +78,18 @@ class ClientEngine {
     const img = this.images[spriteCfg.img];
     const { camera } = this;
     this.context.drawImage(img, fx, fy, fw, fh, x - camera.x, y - camera.y, w, h);
+  }
+
+  addCanvas(name, width,height) {
+    let canvas = this.canvases[name];
+
+    if (!canvas) {
+      canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+
+      this.canvases[name] = canvas;
+    }
   }
 }
 
