@@ -28,7 +28,7 @@ class MovableObject extends PositionedObject {
     if (this.speed) {
       const me = this;
 
-      const dx = animateEx(me.deltaX,me.motionStartTime, time, me.speed);
+      const dx = animateEx(me.deltaX, me.motionStartTime, time, me.speed);
       const dy = animateEx(me.deltaY, me.motionStartTime, time, me.speed);
 
       const newX = me.toX + dx.offset - me.deltaX;

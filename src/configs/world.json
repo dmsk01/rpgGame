@@ -42,7 +42,7 @@
             [["grass"]],
             [["grass"]],
             [["grass"]],
-            [["grass"], [], [{ "type": "boy2", "player": true}]],
+            [["grass"], [], [{ "type": "boy2", "class": "player"}]],
             [["grass"]],
             [["grass"]],
             [["grass"]],
