@@ -6,7 +6,11 @@ import gameObjects from '../configs/gameObjects.json';
 
 class ClientGame {
   constructor(config) {
-    Object.assign(this, { config, gameObjects, player: null });
+    Object.assign(this, {
+      config,
+      gameObjects,
+      player: null,
+    });
 
     this.engine = this.createEngine();
 

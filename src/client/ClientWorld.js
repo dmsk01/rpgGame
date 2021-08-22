@@ -41,6 +41,17 @@ class ClientWorld extends PositionedObject {
     }
   }
 
+  getUserName() {
+    const input = document.querySelector('.input');
+    const btn = document.querySelector('.btn');
+    const gameStart = document.querySelector('.start-game');
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      gameStart.style.display = 'none';
+      this.name = input.value || 'spy';
+    });
+  }
+
   render(time) {
     const { levelCfg, map, worldWidth, worldHeight } = this;
 

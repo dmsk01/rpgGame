@@ -1,7 +1,6 @@
 import './index.scss';
 import SenseiWalk from './assets/Male-4-Walk.png';
 import terrainAtlas from './assets/terrain.png';
-import worldConfig from './configs/world.json';
 import ClientGame from './client/ClientGame';
 
 const canvas = document.getElementById('game');
@@ -104,14 +103,20 @@ image.addEventListener('load', () => {
   window.requestAnimationFrame(walk);
 });
 
-const { map } = worldConfig;
-
 window.addEventListener('load', () => {
-  ClientGame.init({ tagId: 'game' });
-});
+  const startGame = document.querySelector('.start-game');
+  const nameForm = document.getElementById('nameForm');
+  const inputName = document.getElementById('name');
 
-setTimeout(() => {
-  document.getElementById('loading').style.transition = 'all 0.5s ease';
-  document.getElementById('loading').style.visibility = 'hidden';
-  document.getElementById('loading').style.opacity = 0;
-}, 500);
+  const submitName = (e) => {
+    e.preventDefault();
+
+    if (inputName.value) {
+      ClientGame.init({ tagId: 'game', playerName: inputName.value });
+      nameForm.removeEventListener('submit', submitName);
+      startGame.remove();
+    }
+  };
+
+  nameForm.addEventListener('submit', submitName);
+});
